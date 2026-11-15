@@ -93,6 +93,7 @@ def contributions_svg(days, total):
         col, row = (d - first).days // 7, (d.weekday() + 1) % 7
         x, y = x0 + col * (cell + gap), y0 + row * (cell + gap)
         body.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3.5" '
+                    f'class="up" style="animation-delay:{col * 0.03:.2f}s" '
                     f'fill="{LEVELS[level(days[d.isoformat()], peak)]}"/>')
         key = (d.year, d.month)
         if d.day <= 7 and row == 0 and key not in seen_months and col < 52:
@@ -105,7 +106,8 @@ def contributions_svg(days, total):
     for i, c in enumerate(LEVELS):
         body.append(f'<rect x="{lx + i * 20}" y="261" width="14" height="14" rx="3" fill="{c}"/>')
     body.append(text(lx + 5 * 20 + 4, 272, "MORE", 11, MUTED, weight=600, spacing=2))
-    save("stats-contributions.svg", svg(w, h, "".join(body), f"{total} contributions in the last year"))
+    save("stats-contributions.svg", svg(w, h, "".join(body), f"{total} contributions in the last year",
+                                        light=BLUE, light_dur=10))
 
 
 def overview_svg(total, active, repos, langs):
@@ -115,10 +117,10 @@ def overview_svg(total, active, repos, langs):
     body = [text(44, 54, "ACTIVITY", 13, GOLD, weight=700, spacing=6)]
     for i, (value, label) in enumerate(items):
         x, y = 44 + (i % 2) * 270, 122 + (i // 2) * 84
-        body.append(text(x, y, value, 40, WHITE, SERIF))
+        body.append(text(x, y, value, 40, WHITE, SERIF, extra=f'class="up" style="animation-delay:{0.2 + i * 0.2:.1f}s"'))
         body.append(text(x, y + 24, label, 11.5, MUTED, weight=600, spacing=2.2))
     save("stats-overview.svg", svg(w, h, "".join(body), "GitHub activity: " +
-                                   ", ".join(f"{v} {l.lower()}" for v, l in items)))
+                                   ", ".join(f"{v} {l.lower()}" for v, l in items), light=GOLD_LIGHT, light_dur=8))
 
 
 def languages_svg(totals):
@@ -129,7 +131,8 @@ def languages_svg(totals):
         top.append(("Other", rest))
     grand = sum(n for _, n in top) or 1
     body = [text(44, 54, "LANGUAGES", 13, GOLD, weight=700, spacing=6),
-            '<clipPath id="bar"><rect x="44" y="78" width="512" height="12" rx="6"/></clipPath>']
+            '<clipPath id="bar"><rect x="44" y="78" width="512" height="12" rx="6">'
+            '<animate attributeName="width" from="0" to="512" dur="1.8s" fill="freeze"/></rect></clipPath>']
     x = 44.0
     for i, (lang, n) in enumerate(top):
         bw = 512 * n / grand
@@ -141,7 +144,7 @@ def languages_svg(totals):
         body.append(text(lx + 22, ly, lang, 16, WHITE, weight=500))
         body.append(text(lx + 222, ly, f"{100 * n / grand:.1f}%", 15, MUTED, anchor="end"))
     save("stats-languages.svg", svg(w, h, "".join(body), "Languages by code size: " +
-                                    ", ".join(f"{l} {100 * n / grand:.1f}%" for l, n in top)))
+                                    ", ".join(f"{l} {100 * n / grand:.1f}%" for l, n in top), light=BLUE, light_dur=8))
 
 
 if __name__ == "__main__":

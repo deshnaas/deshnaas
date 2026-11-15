@@ -10,7 +10,31 @@
   <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0" stop-color="#C9A961" stop-opacity="0.9"/><stop offset="1" stop-color="#C9A961" stop-opacity="0"/>
   </linearGradient>
-</defs>
+<linearGradient id="shineW" gradientUnits="userSpaceOnUse" x1="-220" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#F2F0EA"/><stop offset="0.5" stop-color="#4C8DFF"/><stop offset="1" stop-color="#F2F0EA"/><animate attributeName="x1" values="-220;600;600" keyTimes="0;0.55;1" dur="5.5s" repeatCount="indefinite"/><animate attributeName="x2" values="0;820;820" keyTimes="0;0.55;1" dur="5.5s" repeatCount="indefinite"/></linearGradient><clipPath id="frame"><rect x="1" y="1" width="598" height="288" rx="18"/></clipPath></defs>
+<style>
+.up{opacity:0;animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tw{animation:tw 3.2s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.12}50%{opacity:.95}}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 16s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.run{animation:run 7s linear infinite}
+@keyframes run{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+.eq{transform-box:fill-box;transform-origin:center;animation:eq 1.1s ease-in-out infinite alternate}
+@keyframes eq{from{transform:scaleY(.18)}to{transform:scaleY(1)}}
+.nudge{animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+.float{animation:float 14s ease-in-out infinite alternate}
+@keyframes float{to{transform:translate(36px,-22px)}}
+.wave{animation:wave 10s linear infinite}
+@keyframes wave{to{transform:translateX(-600px)}}
+.breathe{animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+.ping{transform-box:fill-box;transform-origin:center;opacity:0;animation:ping 7s ease-out infinite}
+@keyframes ping{0%{opacity:.9;transform:scale(1)}14%{opacity:0;transform:scale(2.1)}100%{opacity:0;transform:scale(2.1)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.up{opacity:1}}
+</style>
 <rect x="1" y="1" width="598" height="288" rx="18" fill="url(#bg)" stroke="#1E2A44" stroke-opacity="1.0" stroke-width="1.5"/>
-<rect x="1" y="46" width="4" height="64" rx="2" fill="#4C8DFF"/><text x="46" y="62" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4C8DFF" letter-spacing="6" text-anchor="start" >RECOGNITION</text><text x="44" y="158" font-family="Georgia, 'Times New Roman', Times, serif" font-size="66" font-weight="400" fill="#F2F0EA" letter-spacing="0" text-anchor="start" >Top 2%</text><text x="46" y="204" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#F2F0EA" letter-spacing="2.4" text-anchor="start" >GUVI INDIA AI IMPACT BUILDATHON</text><rect x="46" y="222" width="48" height="2" fill="#4C8DFF"/><text x="46" y="258" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="17" font-weight="400" fill="#8D97AB" letter-spacing="0" text-anchor="start" >Among 48,000 participants.</text>
+<rect x="1" y="46" width="4" height="64" rx="2" fill="#4C8DFF" class="breathe"/><circle cx="536" cy="56" r="5" fill="#4C8DFF"/><circle cx="536" cy="56" r="5" fill="none" stroke="#4C8DFF" stroke-width="1.5" class="ping" style="animation-duration:3.2s"/><text x="46" y="62" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4C8DFF" letter-spacing="6" text-anchor="start" class="up" style="animation-delay:0s">RECOGNITION</text><text x="44" y="158" font-family="Georgia, 'Times New Roman', Times, serif" font-size="66" font-weight="400" fill="url(#shineW)" letter-spacing="0" text-anchor="start" class="up" style="animation-delay:0.2s">Top 2%</text><text x="46" y="204" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#F2F0EA" letter-spacing="2.4" text-anchor="start" class="up" style="animation-delay:0.5s">GUVI INDIA AI IMPACT BUILDATHON</text><rect x="46" y="222" width="48" height="2" fill="#4C8DFF" class="up" style="animation-delay:0.7s"/><text x="46" y="258" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="17" font-weight="400" fill="#8D97AB" letter-spacing="0" text-anchor="start" class="up" style="animation-delay:0.8s">Among 48,000 participants.</text>
+<rect x="1" y="1" width="598" height="288" rx="18" fill="none" stroke="#4C8DFF" pathLength="100" stroke-dasharray="9 91" stroke-linecap="round" class="run" style="animation-duration:8s" stroke-width="5" stroke-opacity="0.18"/><rect x="1" y="1" width="598" height="288" rx="18" fill="none" stroke="#4C8DFF" pathLength="100" stroke-dasharray="9 91" stroke-linecap="round" class="run" style="animation-duration:8s" stroke-width="1.8"/>
 </svg>
